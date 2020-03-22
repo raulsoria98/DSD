@@ -40,6 +40,30 @@ _dividir_1 (dividir_1_argument *argp, struct svc_req *rqstp)
 	return (dividir_1_svc(argp->arg1, argp->arg2, rqstp));
 }
 
+static double *
+_escalar2d_1 (escalar2d_1_argument *argp, struct svc_req *rqstp)
+{
+	return (escalar2d_1_svc(argp->arg1, argp->arg2, rqstp));
+}
+
+static vect2D *
+_vectorial2d_1 (vectorial2d_1_argument *argp, struct svc_req *rqstp)
+{
+	return (vectorial2d_1_svc(argp->arg1, argp->arg2, rqstp));
+}
+
+static double *
+_escalar3d_1 (escalar3d_1_argument *argp, struct svc_req *rqstp)
+{
+	return (escalar3d_1_svc(argp->arg1, argp->arg2, rqstp));
+}
+
+static vect3D *
+_vectorial3d_1 (vectorial3d_1_argument *argp, struct svc_req *rqstp)
+{
+	return (vectorial3d_1_svc(argp->arg1, argp->arg2, rqstp));
+}
+
 static void
 calcprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
@@ -48,6 +72,10 @@ calcprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		restar_1_argument restar_1_arg;
 		multiplicar_1_argument multiplicar_1_arg;
 		dividir_1_argument dividir_1_arg;
+		escalar2d_1_argument escalar2d_1_arg;
+		vectorial2d_1_argument vectorial2d_1_arg;
+		escalar3d_1_argument escalar3d_1_arg;
+		vectorial3d_1_argument vectorial3d_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -80,6 +108,30 @@ calcprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		_xdr_argument = (xdrproc_t) xdr_dividir_1_argument;
 		_xdr_result = (xdrproc_t) xdr_double;
 		local = (char *(*)(char *, struct svc_req *)) _dividir_1;
+		break;
+
+	case escalar2D:
+		_xdr_argument = (xdrproc_t) xdr_escalar2d_1_argument;
+		_xdr_result = (xdrproc_t) xdr_double;
+		local = (char *(*)(char *, struct svc_req *)) _escalar2d_1;
+		break;
+
+	case vectorial2D:
+		_xdr_argument = (xdrproc_t) xdr_vectorial2d_1_argument;
+		_xdr_result = (xdrproc_t) xdr_vect2D;
+		local = (char *(*)(char *, struct svc_req *)) _vectorial2d_1;
+		break;
+
+	case escalar3D:
+		_xdr_argument = (xdrproc_t) xdr_escalar3d_1_argument;
+		_xdr_result = (xdrproc_t) xdr_double;
+		local = (char *(*)(char *, struct svc_req *)) _escalar3d_1;
+		break;
+
+	case vectorial3D:
+		_xdr_argument = (xdrproc_t) xdr_vectorial3d_1_argument;
+		_xdr_result = (xdrproc_t) xdr_vect3D;
+		local = (char *(*)(char *, struct svc_req *)) _vectorial3d_1;
 		break;
 
 	default:

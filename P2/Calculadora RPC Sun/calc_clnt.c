@@ -76,3 +76,71 @@ dividir_1(double arg1, double arg2,  CLIENT *clnt)
 	}
 	return (&clnt_res);
 }
+
+double *
+escalar2d_1(vect2D arg1, vect2D arg2,  CLIENT *clnt)
+{
+	escalar2d_1_argument arg;
+	static double clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	arg.arg1 = arg1;
+	arg.arg2 = arg2;
+	if (clnt_call (clnt, escalar2D, (xdrproc_t) xdr_escalar2d_1_argument, (caddr_t) &arg,
+		(xdrproc_t) xdr_double, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+vect2D *
+vectorial2d_1(vect2D arg1, vect2D arg2,  CLIENT *clnt)
+{
+	vectorial2d_1_argument arg;
+	static vect2D clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	arg.arg1 = arg1;
+	arg.arg2 = arg2;
+	if (clnt_call (clnt, vectorial2D, (xdrproc_t) xdr_vectorial2d_1_argument, (caddr_t) &arg,
+		(xdrproc_t) xdr_vect2D, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+double *
+escalar3d_1(vect3D arg1, vect3D arg2,  CLIENT *clnt)
+{
+	escalar3d_1_argument arg;
+	static double clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	arg.arg1 = arg1;
+	arg.arg2 = arg2;
+	if (clnt_call (clnt, escalar3D, (xdrproc_t) xdr_escalar3d_1_argument, (caddr_t) &arg,
+		(xdrproc_t) xdr_double, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
+
+vect3D *
+vectorial3d_1(vect3D arg1, vect3D arg2,  CLIENT *clnt)
+{
+	vectorial3d_1_argument arg;
+	static vect3D clnt_res;
+
+	memset((char *)&clnt_res, 0, sizeof(clnt_res));
+	arg.arg1 = arg1;
+	arg.arg2 = arg2;
+	if (clnt_call (clnt, vectorial3D, (xdrproc_t) xdr_vectorial3d_1_argument, (caddr_t) &arg,
+		(xdrproc_t) xdr_vect3D, (caddr_t) &clnt_res,
+		TIMEOUT) != RPC_SUCCESS) {
+		return (NULL);
+	}
+	return (&clnt_res);
+}
