@@ -14,22 +14,18 @@ extern "C" {
 #endif
 
 
-typedef struct vect_2D *vect2D;
-
-typedef struct vect_3D *vect3D;
-
-struct vect_2D {
+struct vect2D {
 	double x;
 	double y;
 };
-typedef struct vect_2D vect_2D;
+typedef struct vect2D vect2D;
 
-struct vect_3D {
+struct vect3D {
 	double x;
 	double y;
 	double z;
 };
-typedef struct vect_3D vect_3D;
+typedef struct vect3D vect3D;
 
 struct sumar_1_argument {
 	double arg1;
@@ -99,8 +95,8 @@ extern  double * dividir_1_svc(double , double , struct svc_req *);
 extern  double * escalar2d_1(vect2D , vect2D , CLIENT *);
 extern  double * escalar2d_1_svc(vect2D , vect2D , struct svc_req *);
 #define vectorial2D 6
-extern  vect2D * vectorial2d_1(vect2D , vect2D , CLIENT *);
-extern  vect2D * vectorial2d_1_svc(vect2D , vect2D , struct svc_req *);
+extern  double * vectorial2d_1(vect2D , vect2D , CLIENT *);
+extern  double * vectorial2d_1_svc(vect2D , vect2D , struct svc_req *);
 #define escalar3D 7
 extern  double * escalar3d_1(vect3D , vect3D , CLIENT *);
 extern  double * escalar3d_1_svc(vect3D , vect3D , struct svc_req *);
@@ -126,8 +122,8 @@ extern  double * dividir_1_svc();
 extern  double * escalar2d_1();
 extern  double * escalar2d_1_svc();
 #define vectorial2D 6
-extern  vect2D * vectorial2d_1();
-extern  vect2D * vectorial2d_1_svc();
+extern  double * vectorial2d_1();
+extern  double * vectorial2d_1_svc();
 #define escalar3D 7
 extern  double * escalar3d_1();
 extern  double * escalar3d_1_svc();
@@ -142,8 +138,6 @@ extern int calcprog_1_freeresult ();
 #if defined(__STDC__) || defined(__cplusplus)
 extern  bool_t xdr_vect2D (XDR *, vect2D*);
 extern  bool_t xdr_vect3D (XDR *, vect3D*);
-extern  bool_t xdr_vect_2D (XDR *, vect_2D*);
-extern  bool_t xdr_vect_3D (XDR *, vect_3D*);
 extern  bool_t xdr_sumar_1_argument (XDR *, sumar_1_argument*);
 extern  bool_t xdr_restar_1_argument (XDR *, restar_1_argument*);
 extern  bool_t xdr_multiplicar_1_argument (XDR *, multiplicar_1_argument*);
@@ -156,8 +150,6 @@ extern  bool_t xdr_vectorial3d_1_argument (XDR *, vectorial3d_1_argument*);
 #else /* K&R C */
 extern bool_t xdr_vect2D ();
 extern bool_t xdr_vect3D ();
-extern bool_t xdr_vect_2D ();
-extern bool_t xdr_vect_3D ();
 extern bool_t xdr_sumar_1_argument ();
 extern bool_t xdr_restar_1_argument ();
 extern bool_t xdr_multiplicar_1_argument ();

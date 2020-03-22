@@ -46,7 +46,7 @@ _escalar2d_1 (escalar2d_1_argument *argp, struct svc_req *rqstp)
 	return (escalar2d_1_svc(argp->arg1, argp->arg2, rqstp));
 }
 
-static vect2D *
+static double *
 _vectorial2d_1 (vectorial2d_1_argument *argp, struct svc_req *rqstp)
 {
 	return (vectorial2d_1_svc(argp->arg1, argp->arg2, rqstp));
@@ -118,7 +118,7 @@ calcprog_1(struct svc_req *rqstp, register SVCXPRT *transp)
 
 	case vectorial2D:
 		_xdr_argument = (xdrproc_t) xdr_vectorial2d_1_argument;
-		_xdr_result = (xdrproc_t) xdr_vect2D;
+		_xdr_result = (xdrproc_t) xdr_double;
 		local = (char *(*)(char *, struct svc_req *)) _vectorial2d_1;
 		break;
 

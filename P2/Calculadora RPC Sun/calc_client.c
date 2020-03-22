@@ -20,6 +20,16 @@ calcprog_1(char *host)
 	}
 #endif	/* DEBUG */
 
+	int opcion = -1;
+
+	double a, b;
+	double *resultado;
+	vect2D vectorA2, vectorB2;
+	vect2D *vResultado2;
+
+	vect3D vectorA3, vectorB3;
+	vect3D *vResultado3;
+
 	printf("\t1. Suma de numeros\n");
 	printf("\t2. Resta de numeros\n");
 	printf("\t3. Multiplicacion de numeros\n");
@@ -28,21 +38,6 @@ calcprog_1(char *host)
 	printf("\t6. Vectorial de vector 2D\n");
 	printf("\t7. Escalar de vector 3D\n");
 	printf("\t8. Vectorial de vector 3D\n");
-	
-	int opcion = -1;
-
-	double a, b;
-	double *resultado;
-	vect_2D va2, vb2, res2;
-	vect2D vectorA2 = &va2;
-	vect2D vectorB2 = &vb2;
-	vect2D *vResultado2;
-
-	vect_3D va3, vb3, res3;
-	vect3D vectorA3 = &va3;
-	vect3D vectorB3 = &vb3;
-	vect3D *vResultado3;
-
 	do
 	{
 		printf("\nSeleccione una opcion: ");
@@ -101,74 +96,74 @@ calcprog_1(char *host)
 
 	case 5:
 		printf("\nIntroduzca el primer numero del primer vector: ");
-		scanf("%lf", &vectorA2->x);
+		scanf("%lf", &vectorA2.x);
 		printf("Introduzca el segundo numero del primer vector: ");
-		scanf("%lf", &vectorA2->y);
+		scanf("%lf", &vectorA2.y);
 		printf("\nIntroduzca el primer numero del segundo vector: ");
-		scanf("%lf", &vectorB2->x);
+		scanf("%lf", &vectorB2.x);
 		printf("Introduzca el segundo numero del segundo vector: ");
-		scanf("%lf", &vectorB2->y);
+		scanf("%lf", &vectorB2.y);
 		resultado = escalar2d_1(vectorA2, vectorB2, clnt);
 		if (resultado == (double *) NULL) {
 			clnt_perror (clnt, "call failed");
 		}
-		printf("\nOperacion: <%g,%g> * <%g,%g> = %g\n", vectorA2->x, vectorA2->y, vectorB2->x, vectorB2->y, *resultado);
+		printf("\nOperacion: <%g,%g> * <%g,%g> = %g\n", vectorA2.x, vectorA2.y, vectorB2.x, vectorB2.y, *resultado);
 		break;
 	
 	case 6:
 		printf("\nIntroduzca el primer numero del primer vector: ");
-		scanf("%lf", &vectorA2->x);
+		scanf("%lf", &vectorA2.x);
 		printf("Introduzca el segundo numero del primer vector: ");
-		scanf("%lf", &vectorA2->y);
+		scanf("%lf", &vectorA2.y);
 		printf("\nIntroduzca el primer numero del segundo vector: ");
-		scanf("%lf", &vectorB2->x);
+		scanf("%lf", &vectorB2.x);
 		printf("Introduzca el segundo numero del segundo vector: ");
-		scanf("%lf", &vectorB2->y);
-		vResultado2 = vectorial2d_1(vectorA2, vectorB2, clnt);
-		if (vResultado2 == (vect2D *) NULL) {
+		scanf("%lf", &vectorB2.y);
+		resultado = vectorial2d_1(vectorA2, vectorB2, clnt);
+		if (resultado == (double *) NULL) {
 			clnt_perror (clnt, "call failed");
 		}
-		printf("\nOperacion: <%g,%g> x <%g,%g> = %gk\n", vectorA2->x, vectorA2->y, vectorB2->x, vectorB2->y, (*vResultado2)->x);
+		printf("\nOperacion: <%g,%g> x <%g,%g> = %gk\n", vectorA2.x, vectorA2.y, vectorB2.x, vectorB2.y, *resultado);
 		break;
 	
 	case 7:
 		printf("\nIntroduzca el primer numero del primer vector: ");
-		scanf("%lf", &vectorA3->x);
+		scanf("%lf", &vectorA3.x);
 		printf("Introduzca el segundo numero del primer vector: ");
-		scanf("%lf", &vectorA3->y);
+		scanf("%lf", &vectorA3.y);
 		printf("Introduzca el tercer numero del primer vector: ");
-		scanf("%lf", &vectorA3->z);
+		scanf("%lf", &vectorA3.z);
 		printf("\nIntroduzca el primer numero del segundo vector: ");
-		scanf("%lf", &vectorB3->x);
+		scanf("%lf", &vectorB3.x);
 		printf("Introduzca el segundo numero del segundo vector: ");
-		scanf("%lf", &vectorB3->y);
+		scanf("%lf", &vectorB3.y);
 		printf("Introduzca el tercer numero del segundo vector: ");
-		scanf("%lf", &vectorB3->z);
+		scanf("%lf", &vectorB3.z);
 		resultado = escalar3d_1(vectorA3, vectorB3, clnt);
 		if (resultado == (double *) NULL) {
 			clnt_perror (clnt, "call failed");
 		}
-		printf("\nOperacion: <%g,%g,%g> * <%g,%g,%g> = %g\n", vectorA3->x, vectorA3->y, vectorA3->z, vectorB3->x, vectorB3->y, vectorB3->z, *resultado);
+		printf("\nOperacion: <%g,%g,%g> * <%g,%g,%g> = %g\n", vectorA3.x, vectorA3.y, vectorA3.z, vectorB3.x, vectorB3.y, vectorB3.z, *resultado);
 		break;
 	
 	case 8:
 		printf("\nIntroduzca el primer numero del primer vector: ");
-		scanf("%lf", &vectorA3->x);
+		scanf("%lf", &vectorA3.x);
 		printf("Introduzca el segundo numero del primer vector: ");
-		scanf("%lf", &vectorA3->y);
+		scanf("%lf", &vectorA3.y);
 		printf("Introduzca el tercer numero del primer vector: ");
-		scanf("%lf", &vectorA3->z);
+		scanf("%lf", &vectorA3.z);
 		printf("\nIntroduzca el primer numero del segundo vector: ");
-		scanf("%lf", &vectorB3->x);
+		scanf("%lf", &vectorB3.x);
 		printf("Introduzca el segundo numero del segundo vector: ");
-		scanf("%lf", &vectorB3->y);
+		scanf("%lf", &vectorB3.y);
 		printf("Introduzca el tercer numero del segundo vector: ");
-		scanf("%lf", &vectorB3->z);
+		scanf("%lf", &vectorB3.z);
 		vResultado3 = vectorial3d_1(vectorA3, vectorB3, clnt);
 		if (vResultado3 == (vect3D *) NULL) {
 			clnt_perror (clnt, "call failed");
 		}
-		printf("\nOperacion: <%g,%g,%g> x <%g,%g,%g> = %gi %gj %gk\n", vectorA3->x, vectorA3->y, vectorA3->z, vectorB3->x, vectorB3->y, vectorB3->z, (*vResultado3)->x, (*vResultado3)->y, (*vResultado3)->z);
+		printf("\nOperacion: <%g,%g,%g> x <%g,%g,%g> = %gi %gj %gk\n", vectorA3.x, vectorA3.y, vectorA3.z, vectorB3.x, vectorB3.y, vectorB3.z, (*vResultado3).x, (*vResultado3).y, (*vResultado3).z);
 		break;
 	
 	default:

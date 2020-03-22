@@ -10,26 +10,6 @@ xdr_vect2D (XDR *xdrs, vect2D *objp)
 {
 	register int32_t *buf;
 
-	 if (!xdr_pointer (xdrs, (char **)objp, sizeof (struct vect_2D), (xdrproc_t) xdr_vect_2D))
-		 return FALSE;
-	return TRUE;
-}
-
-bool_t
-xdr_vect3D (XDR *xdrs, vect3D *objp)
-{
-	register int32_t *buf;
-
-	 if (!xdr_pointer (xdrs, (char **)objp, sizeof (struct vect_3D), (xdrproc_t) xdr_vect_3D))
-		 return FALSE;
-	return TRUE;
-}
-
-bool_t
-xdr_vect_2D (XDR *xdrs, vect_2D *objp)
-{
-	register int32_t *buf;
-
 	 if (!xdr_double (xdrs, &objp->x))
 		 return FALSE;
 	 if (!xdr_double (xdrs, &objp->y))
@@ -38,7 +18,7 @@ xdr_vect_2D (XDR *xdrs, vect_2D *objp)
 }
 
 bool_t
-xdr_vect_3D (XDR *xdrs, vect_3D *objp)
+xdr_vect3D (XDR *xdrs, vect3D *objp)
 {
 	register int32_t *buf;
 

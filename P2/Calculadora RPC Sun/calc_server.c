@@ -51,19 +51,17 @@ escalar2d_1_svc(vect2D arg1, vect2D arg2,  struct svc_req *rqstp)
 {
 	static double  result;
 
-	result = (arg1->x * arg2->x) + (arg1->y * arg2->y);
+	result = (arg1.x * arg2.x) + (arg1.y * arg2.y);
 
 	return &result;
 }
 
-vect2D *
+double *
 vectorial2d_1_svc(vect2D arg1, vect2D arg2,  struct svc_req *rqstp)
 {
-	static vect_2D res;
-	static vect2D  result = &res;
+	static double  result;
 
-	result->x = (arg1->x * arg2->y) - (arg1->y * arg2->x);
-	result->y = 0;
+	result = (arg1.x * arg2.y) - (arg1.y * arg2.x);
 
 	return &result;
 }
@@ -73,7 +71,7 @@ escalar3d_1_svc(vect3D arg1, vect3D arg2,  struct svc_req *rqstp)
 {
 	static double  result;
 
-	result = (arg1->x * arg2->x) + (arg1->y * arg2->y) + (arg1->z * arg2->z);
+	result = (arg1.x * arg2.x) + (arg1.y * arg2.y) + (arg1.z * arg2.z);
 
 	return &result;
 }
@@ -81,12 +79,11 @@ escalar3d_1_svc(vect3D arg1, vect3D arg2,  struct svc_req *rqstp)
 vect3D *
 vectorial3d_1_svc(vect3D arg1, vect3D arg2,  struct svc_req *rqstp)
 {
-	static vect_3D res;
-	static vect3D  result = &res;
+	static vect3D  result;
 
-	result->x = (arg1->y * arg2->z) - (arg1->z * arg2->y);
-	result->y = (arg1->z * arg2->x) - (arg1->x * arg2->z);
-	result->z = (arg1->x * arg2->y) - (arg1->y * arg2->x);
+	result.x = (arg1.y * arg2.z) - (arg1.z * arg2.y);
+	result.y = (arg1.z * arg2.x) - (arg1.x * arg2.z);
+	result.z = (arg1.x * arg2.y) - (arg1.y * arg2.x);
 
 	return &result;
 }
