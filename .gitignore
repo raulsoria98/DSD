@@ -50,3 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+
+P2/Calculadora\ Apache\ Thrift/venv
