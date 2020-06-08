@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cliente</title>
+        <link rel="stylesheet" href="css/estilos.css">
+    </head>
+
+    <body>
+        <div id="estados">
+            Temperatura:
+            <span id="estado-temperatura"></span><br><br>
+    
+            Luminoisdad:
+            <span id="estado-luminosidad"></span><br><br>
+    
+            Persianas:
+            <span id="estado-persianas"></span><br><br>
+    
+            Aire Acondicionado:
+            <span id="estado-aire"></span><br><br>
+        </div>
+
+        <div id="botones">
+            <button onclick="cambiar_persianas();">Motor persianas</button>
+            <button onclick="cambiar_aire();">Aire Acondicionado</button>
+        </div>
+
+        <a class="pagina" target="_blank" href="sensores.html">Sensores</a>
+
+        <div id="alerta-temperatura"></div>
+        <div id="alerta-luminosidad"></div>
+    </body>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var serviceURL = document.URL;
+        var socket = io.connect(serviceURL);
+        
+        socket.emit('obtener-temperatura');
+        socket.emit('obtener-luminosidad');
+        socket.emit('obtener-persianas');
+        socket.emit('obtener-aire');
+        
+        socket.on('actualizar-temperatura', function(data) {
+            var estado_temperatura = document.getElementById('estado-temperatura');
+			estado_temperatura.innerHTML = data;
+        });
+        socket.on('actualizar-luminosidad', function(data) {
+            var estado_luminosidad = document.getElementById('estado-luminosidad');
+			estado_luminosidad.innerHTML = data;
+        });
+        socket.on('actualizar-persianas', function(data) {
+            var estado_persianas = document.getElementById('estado-persianas');
+			estado_persianas.innerHTML = data;
+        });
+        socket.on('actualizar-aire', function(data) {
+            var estado_aire = document.getElementById('estado-aire');
+			estado_aire.innerHTML = data;
+        });
+
+        socket.on('alerta-temperatura', function(data) {
+            var alerta_temperatura = document.getElementById('alerta-temperatura');
+			alerta_temperatura.innerHTML = data;
+        });
+        socket.on('alerta-luminosidad', function(data) {
+            var alerta_luminosidad = document.getElementById('alerta-luminosidad');
+			alerta_luminosidad.innerHTML = data;
+        });
+
+        function cambiar_persianas() {
+            socket.emit('cambiar-persianas');
+        }
+
+        function cambiar_aire() {
+            socket.emit('cambiar-aire');
+        }
+
+    </script>
+</html>
